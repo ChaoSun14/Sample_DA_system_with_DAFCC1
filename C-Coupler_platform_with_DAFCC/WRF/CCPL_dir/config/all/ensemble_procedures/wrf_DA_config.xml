@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<da_instance name="gsi_ens_member" status="on">
+    <external_procedures status="on" procedures_name="gsi_member" dll_name="libgsi.so"/>
+    <periodic_timer status="on" period_unit="seconds" period_count="21600" local_lag_count="0"/>
+    <field_instances status="on" time_processing="inst" ensemble_operation="none"/>
+    <processing_control status="on">
+        <working_directory status="off" path=""/>
+        <config_scripts status="on">
+            <pre_instance_script status="on" name="/home/sunchao/work/C-Coupler_platform_with_DAFCC/WRF/gsi_online_run.sh"/>
+            <post_instance_script status="off" name=""/>
+        </config_scripts>
+    </processing_control>
+</da_instance>
+<da_instance name="gsi_ens_mean" status="on">
+    <external_procedures status="on" procedures_name="gsi_ensmean" dll_name="libgsi_ensmean.so"/>
+    <periodic_timer status="on" period_unit="seconds" period_count="21600" local_lag_count="0"/>
+    <field_instances status="on" time_processing="inst" ensemble_operation="aver">
+        <field name="XLAT" time_processing="inst" ensemble_operation="mem_1"/>
+        <field name="XLONG" time_processing="inst" ensemble_operation="mem_1"/>
+        <field name="ZNU_1" time_processing="inst" ensemble_operation="mem_1"/>
+        <field name="ZNW_1" time_processing="inst" ensemble_operation="mem_1"/>
+        <field name="MAPFAC_MX" time_processing="inst" ensemble_operation="mem_1"/>
+        <field name="MAPFAC_MY" time_processing="inst" ensemble_operation="mem_1"/>
+    </field_instances>
+    <processing_control status="on">
+        <working_directory status="on" path="./gsi_ensmean"/>
+        <config_scripts status="on">
+            <pre_instance_script status="on" name="./gsi_ensmean_online_run.sh"/>
+            <post_instance_script status="off" name=""/>
+        </config_scripts>
+    </processing_control>
+</da_instance>
+<da_instance name="enkf" status="on">
+    <external_procedures status="on" procedures_name="enkf" dll_name="libenkf.so"/>
+    <periodic_timer status="on" period_unit="seconds" period_count="21600" local_lag_count="0"/>
+    <field_instances status="on" time_processing="inst" ensemble_operation="gather">
+    </field_instances>
+     <processing_control status="on">
+        <working_directory status="on" path="./enkf"/>
+        <config_scripts status="on">
+            <pre_instance_script status="on" name="./enkf_online_run.sh"/>
+            <post_instance_script status="off" name=""/>
+        </config_scripts>
+    </processing_control>
+</da_instance>
+</root>
+
+

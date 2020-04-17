@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd $EXEDIR/WRFV4
+if [ "$1" = "wrf" ]; then
+    ./clean 
+fi
+if [ "$1" = "all" ]; then
+    ./clean all
+fi

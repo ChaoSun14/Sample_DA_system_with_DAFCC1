@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<field name="evap"  dimensions="0D"   long_name="water evaporation"  type="flux"  default_unit="kg/s/m^2" />
+<field name="t"  dimensions="V3D"   long_name="surface temperature"  type="state"  default_unit="kelvin" />
+<field name="ps"  dimensions="H2D"   long_name="surface pressure"  type="state"  default_unit="Pa" />
+<field name="ifrac"  dimensions="H2D"   long_name="fraction of sea ice"  type="state"  default_unit="unitless" />
+<field name="topography"  dimensions="H2D"   long_name="ocean bottom topography"  type="state"  default_unit="m" />
+<field name="sst"  dimensions="H2D"   long_name="sea surface temperature"  type="state"  default_unit="kelvin" />
+<field name="sss"  dimensions="H2D"   long_name="salty surface temperature"  type="state"  default_unit="Psu" />
+<field name="ssu"  dimensions="H2D"   long_name="u component of sea surface current"  type="state"  default_unit="Psu" />
+<field name="ssv"  dimensions="H2D"   long_name="v component of sea surface current"  type="state"  default_unit="Psu" />
+<field name="u10"  dimensions="H2D"   long_name="u component wind velocity at 10m"  type="state"  default_unit="m/s" />
+<field name="v10"  dimensions="H2D"   long_name="v component wind velocity at 10m"  type="state"  default_unit="m/s" />
+<field name="ust"  dimensions="H2D"   long_name="wind friction velocity"  type="state"  default_unit="m/s" />
+<field name="rhoa"  dimensions="H2D"   long_name="surface air density"  type="state"  default_unit="kg/m^3" />
+<field name="t2"  dimensions="H2D"   long_name="air temperature at 2m"  type="state"  default_unit="Kelvin" />
+<field name="q2"  dimensions="H2D"   long_name="air specific humidity"  type="state"  default_unit="Kg/Kg" />
+<field name="qfx"  dimensions="H2D"   long_name="surface moisture flux"  type="state"  default_unit="Kg/m^2/s" />
+<field name="sh"  dimensions="H2D"   long_name="surface sensible heat flux"  type="state"  default_unit="W/m^2" />
+<field name="lh"  dimensions="H2D"   long_name="surface latent heat flux"  type="state"  default_unit="W/m^2" />
+<field name="rain"  dimensions="H2D"   long_name="precipitaion"  type="state"  default_unit="mm/s" />
+<field name="mslp"  dimensions="H2D"   long_name="mean sea level pressure"  type="state"  default_unit="Psca" />
+<field name="swdown"  dimensions="H2D"   long_name="net short wave radiation flux"  type="state"  default_unit="W/m^2" />
+<field name="lwdown"  dimensions="H2D"   long_name="downward long wave radiation flux"  type="state"  default_unit="W/m^2" />
+<field name="u_stokes_srf"  dimensions="H2D"   long_name="u component stokes drift"  type="state"  default_unit="m/s" />
+<field name="v_stokes_srf"  dimensions="H2D"   long_name="v component stokes drift"  type="state"  default_unit="m/s" />
+<field name="u_orbital_srf"  dimensions="H2D"   long_name="u component wave orbital speed"  type="state"  default_unit="m/s" />
+<field name="v_orbital_srf"  dimensions="H2D"   long_name="v component wave orbital speed"  type="state"  default_unit="m/s" />
+<field name="whitecap_fraction"  dimensions="H2D"   long_name="whitecap fraction"  type="state"  default_unit="unitless" />
+<field name="break_volume"  dimensions="H2D"   long_name="break water volume per squre per second"  type="state"  default_unit="m^3/m^2/s" />
+<field name="significant_wave_height"  dimensions="H2D"   long_name="significant wave height"  type="state"  default_unit="m" />
+<field name="peak_wave_length"  dimensions="H2D"   long_name="peak wave length"  type="state"  default_unit="m" />
+<field name="peak_wave_period"  dimensions="H2D"   long_name="peak wave period"  type="state"  default_unit="s" />
+<field name="tau_in"  dimensions="H2D"   long_name="wave induced stress"  type="state"  default_unit="N" />
+<field name="bv"  dimensions="V3D"   long_name="none breaking wave induced mixing coefficient"  type="state"  default_unit="unitless" />
+<field name="bbv"  dimensions="V3D"   long_name="breaking wave induced mixing coefficient"  type="state"  default_unit="unitless" />
+<field name="tauwx"  dimensions="H2D"   long_name="u component of wave induced stress"  type="state"  default_unit="m/s" />
+<field name="tauwy"  dimensions="H2D"   long_name="v component of wave induced stress"  type="state"  default_unit="m/s" />
+<field name="regional_time"  dimensions="V1D"   long_name="time for GSI" type="state"  default_unit="time" />
+<field name="P_TOP"  dimensions="0D"   long_name="pressure top of the model" type="state"  default_unit="Pa" />
+<field name="ZNU_1"  dimensions="V1D"   long_name="eta values on half (mass) levels" type="state"  default_unit="ZNU_1" />
+<field name="ZNU_2"  dimensions="V1D"   long_name="eta values on half (mass) levels" type="state"  default_unit="ZNU_2" />
+<field name="ZNW_1"  dimensions="V1D"   long_name="eta values on full (w) levels" type="state"  default_unit="ZNW_1" />
+<field name="ZNW_2"  dimensions="V1D"   long_name="eta values on full (w) levels" type="state"  default_unit="ZNW_2" />
+<field name="MAPFAC_MX"  dimensions="H2D"   long_name="x direction map scale factor"  type="state"  default_unit="MAPFAC_MX" />
+<field name="MAPFAC_MY"  dimensions="H2D"   long_name="y direction map scale factor"  type="state"  default_unit="MAPFAC_MY" />
+<field name="XLAT"  dimensions="H2D"   long_name="latitudes"  type="state"  default_unit="degree" />
+<field name="XLONG"  dimensions="H2D"   long_name="longitudes"  type="state"  default_unit="degree" />
+<field name="mu"  dimensions="H2D"   long_name="perturbation dry air mass in column"  type="state"  default_unit="Pa" />
+<field name="mub"  dimensions="H2D"   long_name="base state dry air mass in column"  type="state"  default_unit="Pa" />
+<field name="psfc0"  dimensions="H2D"   long_name="surface pressure"  type="state"  default_unit="Pa" />
+<field name="PHB"  dimensions="H2D"   long_name="base-state geopotential"  type="state"  default_unit="m2 s-2" />
+<field name="landmask"  dimensions="H2D"   long_name="land mask (1 for land, 0 for water)"  type="state"  default_unit="fraction" />
+<field name="seaice"  dimensions="H2D"   long_name="sea ice flag"  type="state"  default_unit="fraction" />
+<field name="ccpl_sst"  dimensions="H2D"   long_name="skin sea surface temperature"  type="state"  default_unit="K" />
+<field name="ivgtyp"  dimensions="H2D"   long_name="domain vegetation category"  type="state"  default_unit="ivgtyp" />
+<field name="isltyp"  dimensions="H2D"   long_name="domain soil category"  type="state"  default_unit="isltyp" />
+<field name="vegfra"  dimensions="H2D"   long_name="vegetation fraction"  type="state"  default_unit="fraction" />
+<field name="snow"  dimensions="H2D"   long_name="accumulated melted snow"  type="state"  default_unit="kg m-2" />
+<field name="ccpl_u10"  dimensions="H2D"   long_name="10-meter zonal wind"  type="state"  default_unit="m/s" />
+<field name="ccpl_v10"  dimensions="H2D"   long_name="10-meter meridional wind"  type="state"  default_unit="m/s" />
+<field name="smois"  dimensions="H2D"   long_name="soil moistures (k=1)"  type="state"  default_unit="m3 m-3" />
+<field name="tslb"  dimensions="H2D"   long_name="soil temperature (k=1)"  type="state"  default_unit="K" />
+<field name="tsk"  dimensions="H2D"   long_name="surface skin temperature"  type="state"  default_unit="K" />
+<field name="ccpl_t"  dimensions="V3D"   long_name="temperature"  type="state"  default_unit="K" />
+<field name="ccpl_u"  dimensions="V3D"   long_name="x-wind component at mass point"  type="state"  default_unit="m s-1" />
+<field name="ccpl_v"  dimensions="V3D"   long_name="y-wind component at mass point"  type="state"  default_unit="m s-1" />
+<field name="ccpl_q"  dimensions="V3D"   long_name="water vapor mixing ratio"  type="state"  default_unit="kg kg-1" />
+<field name="ccpl_ph"  dimensions="V3D"   long_name="perturbation geopotential"  type="state"  default_unit="m2 s-2" />
+<field name="ccpl_w"  dimensions="V3D"   long_name="z-wind component"  type="state"  default_unit="m s-1" />

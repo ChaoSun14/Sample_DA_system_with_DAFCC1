@@ -1,0 +1,16 @@
+Modifications of EnKF: 
+1. New files added for EnKF integration: enkf_ccpl_kinds.f90、 enkf_ccpl_grid_vars_mod.f90、 enkf_ccpl_coupling.f90、 enkf_ccpl_mod.f90.
+  a) enkf_ccpl_kinds.f90: declare, manage and release relevant variables required for EnKF integration.
+  b) enkf_ccpl_grid_vars_mod.f90: obtain information about the model grid required for EnKF integration.
+  c) enkf_ccpl_coupling.f90: register EnKF grid, parallel decomposition and other information, declare required model variables.
+  d) enkf_ccpl_mod.f90: Top level driver of the DLL, which contains EnKF initialization, run and finalization driving interfaces.
+2. Modifications of the original EnKF code about reading and writing model files:
+  a) mpisetup.F90: close the original calls of MPI_init and MPI_finalize.
+  b) gridinfo_wrf.f90: add the direct use of model variables obtained from DAFCC to replace the original operation of obtaining model information by reading the model background files.
+  c) statevec.f90: add the direct use of model variables obtained from DAFCC to replace the original operation of the middle array containing the read-in model background fields; transfer the DA analysis updated model fields to the array declared by the framework, and close the original operation to write out the model analysis fields.
+3. Replace the original used MPI communication mpi_comm_world by the MPI communication enkf_ccpl_comm obtained through DAFCC.
+4. EnKF has the problem that some internal variables are only allocated but not released. Add the memory release operation for this part of variables.
+5. Modifications of configuration and compilation files:
+  a) Makefile.dependency: add the configuration of the code files and their dependencies required to generate EnKF DLL.
+  b) Makefile.conf: add the call to C-Coupler2 library.
+  c) Makefile: add configurations for compiling and generating EnKF DLL, and add ‘-FPIC’ and ‘-shared’ in the compilation options.

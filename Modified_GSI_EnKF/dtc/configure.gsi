@@ -1,0 +1,131 @@
+
+SHELL           	=       /bin/sh
+
+# Listing of options that are usually independent of machine type.
+# When necessary, these are over-ridden by each architecture.
+
+#### Architecture specific settings ####
+LIBccpl   = -L$(CCPL_LIB) -lc_coupler -lstdc++
+INCccpl  = -I$(CCPL_LIB)/include
+# Settings for Linux x86_64, Intel compiler (ifort & icc)  (dmpar,optimize)#
+LDFLAGS        =  -Wl,-rpath,$(NETCDF)/lib
+#LDFLAGS        =  -Wl,-rpath,/opt/netCDF-intel15-hdf5/lib
+OMP            =  -openmp
+COREDIR        =  /home/sunchao/work/GSI_EnKF/lib_test/comGSIv3.6_EnKFv1.2/dtc
+INC_DIR        =  $(COREDIR)/include
+SFC            =  ifort
+SF90           =  ifort -free
+SCC            =  icc
+#INC_FLAGS      =  -module $(INC_DIR) -I $(INC_DIR) -I /opt/netCDF-intel15-hdf5/include $(INCccpl)
+INC_FLAGS      =  -module $(INC_DIR) -I $(INC_DIR) -I $(NETCDF)/include $(INCccpl)
+FFLAGS_i4r4    =  -integer-size 32 -real-size 32 -fPIC
+FFLAGS_i4r8    =  -integer-size 32 -real-size 64 -fPIC
+FFLAGS_i8r8    =  -integer-size 64 -real-size 64 -fPIC
+FFLAGS_DEFAULT =  -fp-model precise -assume byterecl -convert big_endian -fPIC -ftz
+#FFLAGS_DEFAULT =  -fp-model strict -fp-speculation=strict -mp1 -no-vec -no-simd -assume byterecl -convert big_endian -fPIC
+FFLAGS_DEBUG   =  -O0 -g -traceback -check bounds -fpe0 -ftz -warn errors -fpstkchk -mp -fPIC
+FFLAGS_OPT     =  -O3 -fPIC
+FFLAGS         =  -O2 $(FFLAGS_DEFAULT) $(INC_FLAGS) $(LDFLAGS) -DLINUX -fPIC -g -traceback #-check bounds -check pointer
+# Library build flags
+FFLAGS_BACIO   =  -O3 $(FFLAGS_DEFAULT)
+ARFLAGS_BACIO  =
+FFLAGS_BUFR    =  -O3 $(FFLAGS_DEFAULT) $(FFLAGS_i4r8) -mcmodel=large
+CFLAGS_BUFR    =  -O3 -DUNDERSCORE -mcmodel=large -fPIC
+ARFLAGS_BUFR   =  
+FFLAGS_CLOUD   =  -O3 $(FFLAGS_DEFAULT)
+FFLAGS_CRTM    =  -O2 $(FFLAGS_DEFAULT)
+LFLAGS_CRTM    =  
+FFLAGS_GFSIO   =  -O3 $(FFLAGS_DEFAULT) $(FFLAGS_i4r4)
+ARFLAGS_GFSIO  =
+FFLAGS_SFCIO   =  -O3 $(FFLAGS_DEFAULT) $(FFLAGS_i4r4)
+FFLAGS_SIGIO   =  -O3 $(FFLAGS_DEFAULT) $(FFLAGS_i4r4)
+ARFLAGS_SIGIO  =
+FFLAGS_SP      =  -O3 $(FFLAGS_DEFAULT) $(FFLAGS_i4r8)
+FFLAGS_W3      =  -O3 $(FFLAGS_DEFAULT) 
+#
+CPP            =  fpp 
+CPP_FLAGS      =  -C -P -D_REAL8_ -DWRF -DLINUX  
+#CPP_FLAGS      =  -C -P -D_REAL4_ -DWRF -DLINUX  
+CPP_F90FLAGS   =   
+
+#DM_FC          =  mpif90  -f90=$(SFC)
+#DM_F90         =  mpif90 -free -f90=$(SFC)
+#DM_CC          =  icc
+DM_FC          =  mpiifort
+DM_F90         =  mpiifort -free
+DM_CC          =  mpiicc
+
+FC             =  $(DM_FC)
+F90            =  $(DM_F90)
+CC             =  $(DM_CC)
+
+CFLAGS         =  -O2 -DLINUX -DUNDERSCORE -fPIC
+CFLAGS2        =  -DLINUX -Dfunder -DFortranByte=char -DFortranInt=int -DFortranLlong='long long' -fPIC
+
+MYLIBsys       = -L$(LAPACK_PATH) -mkl=sequential
+NETCDF_PATH    = 
+
+
+
+###########################################################
+#
+#	Macros, these should be generic for all machines
+
+LN		=  ln -sf
+MAKE		=  make -i -r
+RM		=  /bin/rm -f
+CP		=  /bin/cp
+AR		=  ar 
+MKDIR           =  /bin/mkdir -p
+
+WRF_INCLUDE     =  -I$(WRF_DIR)/frame
+
+WRF_LIB         =    $(WRF_DIR)/frame/module_internal_header_util.o \
+                     $(WRF_DIR)/frame/pack_utils.o \
+                     $(WRF_DIR)/frame/module_machine.o \
+                     $(WRF_DIR)/main/libwrflib.a \
+                     -L$(WRF_DIR)/external/io_int -lwrfio_int \
+                     -L$(WRF_DIR)/external/io_netcdf -lwrfio_nf
+
+
+WRF_LIB2        =  
+NETCDFPATH      =  $(NETCDF)
+NETCDFLIBS      =  -lnetcdff -lnetcdf $(NETCDF_PATH)
+#WRF_DIR         =  /home/sunchao/work/build_WRF/WRF
+
+
+
+.IGNORE:
+.SUFFIXES: .c .f .F .F90 .f90 .o .fpp
+
+#	There is probably no reason to modify these rules
+
+.c.o:
+	$(RM) $@
+	$(CC) $(CFLAGS2) -c $<	
+
+.f.o:
+	$(RM) $@ $*.mod
+	$(FC) $(FFLAGS) -c $< 
+
+.fpp.o:
+	$(RM) $@ $*.mod $*.f
+	$(CPP) $(CPP_FLAGS) $< > $*.f
+	$(FC) $(FFLAGS) -c $*.f 
+	$(RM) $*.f
+
+.F.o:
+	$(RM) $@ $*.mod
+	$(CPP) $(CPP_FLAGS) $< > $*.f90
+	$(F90) $(FFLAGS) -c $*.f90 
+	$(RM) $*.f90
+
+.F90.o:
+	$(RM) $@ $*.mod
+	$(CPP) $(CPP_FLAGS) $< > $*.f90
+	$(F90) $(FFLAGS) -c $*.f90 
+	$(RM) $*.f90
+
+.f90.o:
+	$(RM) $@ $*.mod
+	$(F90) $(FFLAGS) -c $< 

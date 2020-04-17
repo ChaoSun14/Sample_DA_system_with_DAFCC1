@@ -1,0 +1,16 @@
+Modifications of FIO-AOW:
+1. Modifications of WRF:
+  1) Modifications of original WRF code:
+    a) {WRF_src}/frame/module_wrf_ccpl.F : Add DA configuration subroutines, including:
+       - Ensemble component model registration subroutine: Modify original component model registration subroutine to generate and manage the local communicators of different ensemble members of the component model, and then generate the ensemble-set component model.
+       - DA instance initialization subroutine: Prepare model information (model grids, parallel decompositions, and field instances, etc.), and call the DA instance initialization interface to initialize the DA instance according to the corresponding configuration.
+       - DA instance running subroutine: Call the DA instance running interface, which will automatically transfer the required model variables to the DA algorithm for assimilation analysis according to corresponding configuration, and then transfer the information of the DA updated variables back to the the model.
+    b) {WRF_src}/external/RSL_LITE/module_dm.F: Call the ensemble component model registration subroutine of the added DA configuration module at the beginning of model to generate and manage the local communicators of model ensemble members.
+    c) {WRF_src}/frame/module_integrate.F: Call the DA instance running subroutine of the added DA configuration module during the model integration cycle to run the corresponding DA instances. 
+  2) Modifications of configuration and compilation files:
+    a) {WRF_src}/main/Makefile: Add ‘-Wl, --export-dynamic’ in the executable compilation options.
+    b) {WRF_src}/main/depend.common: Add the configuration of the user added code file and its dependencies.
+2. Modifications of POM:
+    - {POM_src}/src/coupling_pom_mod.F90: Modify original component model registration subroutine to generate and manage the local communicators of different ensemble members of the component model.
+3. Modifications of MASNUM:
+    - {MASNUM_src}/src/coupling_wave_mod.F90: Modify original component model registration subroutine to generate and manage the local communicators of different ensemble members of the component model.

@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<field name="regional_time"  dimensions="V1D"   long_name="time for GSI" type="state"  default_unit="time" />
+<field name="P_TOP"  dimensions="0D"   long_name="pressure top of the model" type="state"  default_unit="Pa" />
+<field name="ZNU_1"  dimensions="V1D"   long_name="eta values on half (mass) levels" type="state"  default_unit="ZNU_1" />
+<field name="ZNU_2"  dimensions="V1D"   long_name="eta values on half (mass) levels" type="state"  default_unit="ZNU_2" />
+<field name="ZNW_1"  dimensions="V1D"   long_name="eta values on full (w) levels" type="state"  default_unit="ZNW_1" />
+<field name="ZNW_2"  dimensions="V1D"   long_name="eta values on full (w) levels" type="state"  default_unit="ZNW_2" />
+<field name="MAPFAC_MX"  dimensions="H2D"   long_name="x direction map scale factor"  type="state"  default_unit="MAPFAC_MX" />
+<field name="MAPFAC_MY"  dimensions="H2D"   long_name="y direction map scale factor"  type="state"  default_unit="MAPFAC_MY" />
+<field name="XLAT"  dimensions="H2D"   long_name="latitudes"  type="state"  default_unit="degree" />
+<field name="XLONG"  dimensions="H2D"   long_name="longitudes"  type="state"  default_unit="degree" />
+<field name="mu"  dimensions="H2D"   long_name="perturbation dry air mass in column"  type="state"  default_unit="Pa" />
+<field name="mub"  dimensions="H2D"   long_name="base state dry air mass in column"  type="state"  default_unit="Pa" />
+<field name="psfc0"  dimensions="H2D"   long_name="surface pressure"  type="state"  default_unit="Pa" />
+<field name="PHB"  dimensions="H2D"   long_name="base-state geopotential"  type="state"  default_unit="m2 s-2" />
+<field name="landmask"  dimensions="H2D"   long_name="land mask (1 for land, 0 for water)"  type="state"  default_unit="fraction" />
+<field name="seaice"  dimensions="H2D"   long_name="sea ice flag"  type="state"  default_unit="fraction" />
+<field name="ccpl_sst"  dimensions="H2D"   long_name="skin sea surface temperature"  type="state"  default_unit="K" />
+<field name="ivgtyp"  dimensions="H2D"   long_name="domain vegetation category"  type="state"  default_unit="ivgtyp" />
+<field name="isltyp"  dimensions="H2D"   long_name="domain soil category"  type="state"  default_unit="isltyp" />
+<field name="vegfra"  dimensions="H2D"   long_name="vegetation fraction"  type="state"  default_unit="fraction" />
+<field name="snow"  dimensions="H2D"   long_name="accumulated melted snow"  type="state"  default_unit="kg m-2" />
+<field name="ccpl_u10"  dimensions="H2D"   long_name="10-meter zonal wind"  type="state"  default_unit="m/s" />
+<field name="ccpl_v10"  dimensions="H2D"   long_name="10-meter meridional wind"  type="state"  default_unit="m/s" />
+<field name="smois"  dimensions="H2D"   long_name="soil moistures (k=1)"  type="state"  default_unit="m3 m-3" />
+<field name="tslb"  dimensions="H2D"   long_name="soil temperature (k=1)"  type="state"  default_unit="K" />
+<field name="tsk"  dimensions="H2D"   long_name="surface skin temperature"  type="state"  default_unit="K" />
+<field name="ccpl_t"  dimensions="V3D"   long_name="temperature"  type="state"  default_unit="K" />
+<field name="ccpl_u"  dimensions="V3D"   long_name="x-wind component at mass point"  type="state"  default_unit="m s-1" />
+<field name="ccpl_v"  dimensions="V3D"   long_name="y-wind component at mass point"  type="state"  default_unit="m s-1" />
+<field name="ccpl_q"  dimensions="V3D"   long_name="water vapor mixing ratio"  type="state"  default_unit="kg kg-1" />
+<field name="ccpl_ph"  dimensions="V3D"   long_name="perturbation geopotential"  type="state"  default_unit="m2 s-2" />
+<field name="ccpl_w"  dimensions="V3D"   long_name="z-wind component"  type="state"  default_unit="m s-1" />
+<field name="ccpl_t_global"  dimensions="V3D"   long_name="temperature"  type="state"  default_unit="K" />
+<field name="ccpl_u_global"  dimensions="V3D"   long_name="x-wind component at mass point"  type="state"  default_unit="m s-1" />
+<field name="ccpl_v_global"  dimensions="V3D"   long_name="y-wind component at mass point"  type="state"  default_unit="m s-1" />
+<field name="ccpl_q_global"  dimensions="V3D"   long_name="water vapor mixing ratio"  type="state"  default_unit="kg kg-1" />
+<field name="ccpl_ph_global"  dimensions="V3D"   long_name="perturbation geopotential"  type="state"  default_unit="m2 s-2" />
+<field name="ccpl_w_global"  dimensions="V3D"   long_name="z-wind component"  type="state"  default_unit="m s-1" />

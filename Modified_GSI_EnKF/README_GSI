@@ -1,0 +1,19 @@
+Modifications of GSI:
+1. New files added for GSI integration: gsi_ccpl_kinds.f90、 gsi_ccpl_grid_vars_mod.f90、 gsi_ccpl_coupling.f90、 gsi_ccpl_mod.f90.
+  a) gsi_ccpl_kinds.f90: Declare, manage and release relevant variables required for GSI integration.
+  b) gsi_ccpl_grid_vars_mod.f90: Obtain information about the model grid required for GSI integration.
+  c) gsi_ccpl_coupling.f90: Register GSI grid, parallel decomposition and other information, declare required model variables.
+  d) gsi_ccpl_mod.f90: Top level driver of the DLL, which contains GSI initialization, run and finalization driving interfaces.
+2. Modifications of the original GSI code about reading and writing model files:
+  a) gsimod.f90: When data transmission is realized through DAFCC, the original operation of reading model background fields and generating intermediate file is turned off and the original calls of MPI_finalize is turned off.
+  b) cplr_read_wrf_mass_guess.f90: When data transmission is realized through the DAFCC, the model related variables that have been obtained through the DAFCC are directly used instead of the operation of obtaining the model information by reading the intermediate file of the model background fields.
+  c) gesinfo.f90: Turn off the check of intermediate file of the model background fields.
+  d) gridmod.f90: When data transmission is realized through the DAFCC, the model related variables obtained through DAFC are directly used instead of the operation of obtaining model information by reading the intermediate file of model background fields.
+  e) gsisub.f90: Add the call to the GSI internal memory release operation of declared variables.
+3. Replace the original used MPI communication mpi_comm_world by the MPI communication gsi_ccpl_comm obtained through DAFCC. 
+4. GSI has the problem that some internal variables are only allocated but not released. Add the memory release operation for this part of variables.
+5. Modifications of configuration and compilation files:
+  a) configure.gsi: add the call to C-Coupler2 library and add ‘-FPIC’ and ‘-shared’ in the compilation options.
+  b) makefile.src: adds the configuration of the code files needed to generate GSI DLL.
+  c) makefile.dependency: adds the configuration of the code files and their dependencies required to generate GSI DLL.
+  d) Makefile_DTC: add configurations for compiling and generating GSI DLL.

@@ -1,0 +1,5 @@
+#CONFIGROOT=/data3/work/yuhao/C-Coupler2_from_yh/model_platform/config
+COMPSET=First_model
+MACH=generic_linux
+#CODEROOT=/data3/work/yuhao/C-Coupler2_from_yh/model_platform/models
+#DATAROOT=/data3/work/yuhao/C-Coupler2_from_yh/inputdata

@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<root>
+<local_import_interfaces>
+   <import_interface  name="WAVE_receive_from_ATM"  status="on">
+       <import_connection status="on">
+           <fields status="on" default="all">
+           </fields>
+           <components status="on" default="off">
+              <component  interface_name="ATM_send_to_WAVE"/>
+           </components>
+       </import_connection>
+       <import_connection status="off">
+           <fields status="on" default="off">
+           </fields>
+       </import_connection>
+   </import_interface>
+   <import_interface  name="WAVE_receive_from_OCN"  status="on">
+       <import_connection status="on">
+           <fields status="on" default="all">
+           </fields>
+           <components status="on" default="off">
+              <component interface_name="OCN_send_to_WAVE" />
+           </components>
+       </import_connection>
+       <import_connection status="off">
+           <fields status="on" default="off">
+           </fields>
+       </import_connection>
+   </import_interface>
+</local_import_interfaces>
+
+</root>

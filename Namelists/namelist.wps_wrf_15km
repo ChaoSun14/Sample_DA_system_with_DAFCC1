@@ -1,0 +1,37 @@
+&share
+ wrf_core = 'ARW',
+ max_dom = 1,
+ start_date = '2016-06-01_00:00:00','2017-04-16_00:00:00',
+ end_date   = '2016-06-10_00:00:00','2017-04-16_06:00:00',
+ interval_seconds = 21600
+ io_form_geogrid = 2,
+/
+
+&geogrid
+ parent_id         =   1,   1,
+ parent_grid_ratio =   1,   4,
+ i_parent_start    =   1,  200,
+ j_parent_start    =   1,  230,
+ e_we              =  481, 561,
+ e_sn              =  361, 537,
+ geog_data_res     = '2m','2m',
+ dx = 15000,
+ dy = 15000,
+ map_proj = 'lambert',
+ ref_lat   =  35.00,
+ ref_lon   =  110.0,
+ truelat1  =  20.0,
+ truelat2  =  50.0,
+ stand_lon =  110.0,
+ geog_data_path = '/home/sunchao/work3/MPAS/WPS_GEOG/Build_WRF/geog/'
+/
+
+&ungrib
+ out_format = 'WPS',
+ prefix = 'FILE',
+/
+
+&metgrid
+ fg_name = 'FILE'
+ io_form_metgrid = 2, 
+/

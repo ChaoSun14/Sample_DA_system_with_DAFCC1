@@ -1,0 +1,15 @@
+Modifications of WRF:
+1. New added file {WRF_src}/frame/module_wrf_DA.F : User added DA configuration module, including:
+  a) Ensemble component model registration subroutine: Generate and manage the local communicators of different ensemble members of the component model, and then generate the ensemble-set component model.
+  b) DA instance initialization subroutine: Prepare model information (model grids, parallel decompositions, and field instances, etc.), and call the DA instance initialization interface to initialize the DA instance according to the corresponding configuration.
+  c) DA instance running subroutine: Call the DA instance running interface, which will automatically transfer the required model variables to the DA algorithm for assimilation analysis according to corresponding configuration, and then transfer the information of the DA updated variables back to the the model.
+2. Modifications of original WRF code:
+  a) {WRF_src}/external/RSL_LITE/module_dm.F: Call the ensemble component model registration subroutine of the added DA configuration module at the beginning of model to generate and manage the local communicators of model ensemble members.
+  b) {WRF_src}/main/module_wrf_top.F: Call the DA instance initialization subroutine of the added DA configuration module after the original model initialization to initialize corresponding DA instances according to the configuration.
+  c) {WRF_src}/frame/module_integrate.F: Call the DA instance running subroutine of the added DA configuration module during the model integration cycle to run the corresponding DA instances. 
+3. Modifications of configuration and compilation files:
+  a) {WRF_src}/configure.wrf: Add the call to C-Coupler2 library.
+  b) {WRF_src}/main/Makefile: Add ‘-Wl, --export-dynamic’ in the executable compilation options.
+  c) {WRF_src}/main/depend.common: Add the configuration of the user added code file and its dependencies.
+  d) {WRF_src}/frame/Makefile(Makefile_frame): Add configurations for compiling the user added code file.
+

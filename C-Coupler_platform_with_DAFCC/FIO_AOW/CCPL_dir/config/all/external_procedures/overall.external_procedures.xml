@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<root>
+<external_procedures_package name="gsi_member" library="libgsi.so"  status="on">
+    <procedure status="on" name="gsi_grid" />
+    <procedure status="on" name="gsi" />
+</external_procedures_package>
+<external_procedures_package name="gsi_ensmean" library="libgsi_ensmean.so"  status="on">
+    <procedure status="on" name="gsi_grid" />
+    <procedure status="on" name="gsi" />
+</external_procedures_package>
+<external_procedures_package name="enkf" library="libenkf.so"  status="on">
+    <procedure status="on" name="enkf_grid" />
+    <procedure status="on" name="enkf" />
+</external_procedures_package>
+</root>
+
